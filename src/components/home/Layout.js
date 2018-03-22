@@ -46,19 +46,19 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{marginBottom: '100px'}}>
         <div
           className="row col-lg-8 col-md-8 col-xs-12"
           style={styles.inputContainer}
         >
-          <div className="col-lg-8 col-md-8 col-xs-8">
+          <div className="col-lg-9 col-md-9 col-xs-9">
             <TextField
               label="Enter FCC User Name to Compete!"
               onChange={e => this.handleChange(e)}
               fullWidth
             />
           </div>
-          <div className="col-lg-4 col-md-4 col-xs-4">
+          <div className="col-lg-2 col-md-2 col-xs-2">
             <Button
               variant="raised"
               color="primary"
@@ -94,6 +94,8 @@ Layout.propTypes = {
 
 const styles = {
   inputContainer: {
+    display: 'flex',
+    justifyContent: 'space-around',
     margin: '120px auto',
   },
 };
