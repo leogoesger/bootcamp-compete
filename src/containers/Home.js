@@ -3,17 +3,25 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Layout from '../components/home/Layout';
-import {createUser, fetchUsers, fetchUser} from '../actions/user';
+import {
+  createUser,
+  fetchUsers,
+  fetchUser,
+  createUserError,
+} from '../actions/user';
 
 export class Home extends React.Component {
+  componentWillMount() {
+    this.props.fetchUsers();
+  }
   render() {
     return (
       <Layout
         users={this.props.users}
-        currentUser={this.props.currentUser}
+        error={this.props.error}
         createUser={userName => this.props.createUser(userName)}
-        fetchUsers={() => this.props.fetchUsers()}
         fetchUser={userName => this.props.fetchUser(userName)}
+        createUserError={message => this.props.createUserError(message)}
       />
     );
   }
@@ -21,16 +29,18 @@ export class Home extends React.Component {
 
 Home.propTypes = {
   users: PropTypes.array,
-  currentUser: PropTypes.object,
   createUser: PropTypes.func,
   fetchUsers: PropTypes.func,
   fetchUser: PropTypes.func,
+  error: PropTypes.string,
+  createUserError: PropTypes.func,
 };
 
 const mapStateToProps = state => {
   return {
     currentUser: state.user.currentUser,
     users: state.user.users,
+    error: state.user.error,
   };
 };
 
@@ -39,6 +49,7 @@ const mapDispatchToProps = dispatch => {
     createUser: userName => dispatch(createUser(userName)),
     fetchUsers: () => dispatch(fetchUsers()),
     fetchUser: userName => dispatch(fetchUser(userName)),
+    createUserError: message => dispatch(createUserError(message)),
   };
 };
 

@@ -8,6 +8,13 @@ const createUserObject = user => {
   };
 };
 
+const createUserErrorObject = message => {
+  return {
+    type: types.CREATE_USER_ERROR_OBJECT,
+    message,
+  };
+};
+
 const createUserObjects = users => {
   return {
     type: types.CREATE_USER_OBJECTS,
@@ -28,10 +35,18 @@ export function createUser(userName) {
       const user = await request
         .post(`${process.env.SERVER_ADDRESS}/users`)
         .send({username: userName});
-      dispatch(createUserObject(user));
+      fetchUsers();
+      dispatch(createUserObject(user.body));
+      dispatch(createUserErrorObject());
     } catch (e) {
-      throw e;
+      dispatch(createUserErrorObject(e.response.body.message));
     }
+  };
+}
+
+export function createUserError(message) {
+  return dispatch => {
+    dispatch(createUserErrorObject(message));
   };
 }
 
@@ -39,7 +54,7 @@ export function fetchUsers() {
   return async dispatch => {
     try {
       const users = await request.get(`${process.env.SERVER_ADDRESS}/users`);
-      dispatch(createUserObjects(users));
+      dispatch(createUserObjects(users.body));
     } catch (e) {
       throw e;
     }
@@ -52,7 +67,7 @@ export function fetchUser(userName) {
       const user = await request.get(
         `${process.env.SERVER_ADDRESS}/users/${userName}`
       );
-      dispatch(fetchUserObject(user));
+      dispatch(fetchUserObject(user.body));
     } catch (e) {
       throw e;
     }
