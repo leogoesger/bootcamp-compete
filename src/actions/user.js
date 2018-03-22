@@ -35,7 +35,8 @@ export function createUser(userName) {
       const user = await request
         .post(`${process.env.SERVER_ADDRESS}/users`)
         .send({username: userName});
-      fetchUsers();
+      const users = await request.get(`${process.env.SERVER_ADDRESS}/users`);
+      dispatch(createUserObjects(users.body));
       dispatch(createUserObject(user.body));
       dispatch(createUserErrorObject());
     } catch (e) {
