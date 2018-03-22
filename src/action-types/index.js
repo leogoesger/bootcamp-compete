@@ -1,7 +1,7 @@
-import ClassTypes from './class';
+import UserTypes from './user';
 
-export { ClassTypes };
+export {UserTypes};
 
 export default {
-  ClassTypes,
+  UserTypes,
 };

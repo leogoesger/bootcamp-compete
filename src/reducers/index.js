@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import {combineReducers} from 'redux';
+import {routerReducer} from 'react-router-redux';
 
-import classification from './classification';
+import user from './user';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
-  classification,
+  user,
 });
 
 export default rootReducer;
