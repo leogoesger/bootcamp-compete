@@ -76,16 +76,10 @@ export function fetchUsers() {
   };
 }
 
-export function fetchUser(userName) {
+export function fetchUser(user) {
   return async dispatch => {
     try {
-      dispatch(fetchingObject(true));
-
-      const user = await request.get(
-        `${process.env.SERVER_ADDRESS}/users/${userName}`
-      );
-      dispatch(fetchUserObject(user.body));
-      dispatch(fetchingObject(false));
+      dispatch(fetchUserObject(user));
     } catch (e) {
       throw e;
     }

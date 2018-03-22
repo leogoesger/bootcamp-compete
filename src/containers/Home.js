@@ -23,6 +23,7 @@ export class Home extends React.Component {
         fetchUser={userName => this.props.fetchUser(userName)}
         createUserError={message => this.props.createUserError(message)}
         fetchingStatus={this.props.fetchingStatus}
+        currentUser={this.props.currentUser}
       />
     );
   }
@@ -36,6 +37,7 @@ Home.propTypes = {
   error: PropTypes.string,
   createUserError: PropTypes.func,
   fetchingStatus: PropTypes.bool,
+  currentUser: PropTypes.object,
 };
 
 const mapStateToProps = state => {

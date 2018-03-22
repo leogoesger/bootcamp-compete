@@ -45,7 +45,12 @@ export default class Overview extends React.Component {
         <TableBody>
           {this.highToLowSort(users).map(n => {
             return (
-              <TableRow key={n.username}>
+              <TableRow
+                key={n.username}
+                style={{cursor: 'pointer'}}
+                onClick={() => this.props.fetchUser(n)}
+                hover={true}
+              >
                 <TableCell>{n.name}</TableCell>
                 <TableCell numeric>{n.score}</TableCell>
                 <TableCell>{n.location}</TableCell>
@@ -93,6 +98,7 @@ export default class Overview extends React.Component {
 
 Overview.propTypes = {
   users: PropTypes.array,
+  fetchUser: PropTypes.func,
 };
 
 const styles = {

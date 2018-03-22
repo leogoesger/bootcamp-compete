@@ -7,6 +7,7 @@ import {find} from 'lodash';
 
 import Loader from './Loader.js';
 import Overview from './Overview';
+import Plot from './Plot';
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -70,7 +71,11 @@ export default class Layout extends React.Component {
           </div>
         </div>
 
-        <Overview users={this.props.users} />
+        <Overview
+          users={this.props.users}
+          fetchUser={userName => this.props.fetchUser(userName)}
+        />
+        <Plot currentUser={this.props.currentUser} />
 
         <Snackbar
           anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
@@ -93,6 +98,8 @@ Layout.propTypes = {
   createUser: PropTypes.func,
   createUserError: PropTypes.func,
   fetchingStatus: PropTypes.bool,
+  currentUser: PropTypes.object,
+  fetchUser: PropTypes.func,
 };
 
 const styles = {
