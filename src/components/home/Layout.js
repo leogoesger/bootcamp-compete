@@ -5,6 +5,7 @@ import Button from 'material-ui/Button';
 import Snackbar from 'material-ui/Snackbar';
 import {find} from 'lodash';
 
+import Loader from './Loader.js';
 import Overview from './Overview';
 
 export default class Layout extends React.Component {
@@ -80,6 +81,7 @@ export default class Layout extends React.Component {
           }}
           message={this.props.error}
         />
+        <Loader loading={this.props.fetchingStatus} />
       </div>
     );
   }
@@ -90,6 +92,7 @@ Layout.propTypes = {
   users: PropTypes.array,
   createUser: PropTypes.func,
   createUserError: PropTypes.func,
+  fetchingStatus: PropTypes.bool,
 };
 
 const styles = {

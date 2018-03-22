@@ -6,6 +6,7 @@ type ACTION = {};
 const initialState: STATE = {
   users: null,
   currentUser: null,
+  fetchingStatus: false,
   error: null,
 };
 
@@ -22,6 +23,8 @@ export default function(state: STATE = initialState, action: ACTION) {
       return objectAssign({}, state, {users: action.users});
     case types.FEATCH_USER_OBJECT:
       return objectAssign({}, state, {currentUser: action.user});
+    case types.FETCHING_OBJECT:
+      return objectAssign({}, state, {fetchingStatus: action.fetchingStatus});
 
     default:
       return state;
