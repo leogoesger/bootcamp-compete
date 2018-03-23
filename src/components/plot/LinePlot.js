@@ -8,7 +8,9 @@ import Colors from '../../styles/Colors';
 export default class LinePlot extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      data: null,
+    };
     this.xScale = d3.scaleLinear();
     this.yScale = d3.scaleLinear();
     this.line = d3.line();
@@ -22,8 +24,13 @@ export default class LinePlot extends React.Component {
   updateD3(props) {
     let {data, width, height} = props;
 
-    const [xMin, xMax] = d3.extent(data, d => this.props.xValue(d));
-    const [yMin, yMax] = d3.extent(data, d => this.props.yValue(d));
+    const newData = [];
+    data.forEach(data =>
+      newData.push({time: Number(data.time), score: Number(data.score)})
+    );
+
+    const [xMin, xMax] = d3.extent(newData, d => this.props.xValue(d));
+    const [yMin, yMax] = d3.extent(newData, d => this.props.yValue(d));
 
     this.xScale.domain([xMin, xMax]).range([0, width]);
     this.yScale.domain([yMin * 0.95, yMax * 1.1]).range([height, 0]);
