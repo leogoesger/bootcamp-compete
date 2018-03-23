@@ -40,15 +40,15 @@ const Axis = blackBox(function() {
       .scale(this.props.scale)
       .tickSize(-this.props.gridLength, 0, 10)
       .tickSizeOuter(0)
-      .ticks(10)
+      .ticks(5)
       .tickPadding(8);
     d3.select(this.anchor).call(axis);
   } else {
     const axis = d3
       .axisLeft()
+      .scale(this.props.scale)
       .tickSize(-this.props.gridLength, 0, 10)
       .tickSizeOuter(0)
-      .scale(this.props.scale)
       .ticks(5)
       .tickPadding(5);
     d3.select(this.anchor).call(axis);

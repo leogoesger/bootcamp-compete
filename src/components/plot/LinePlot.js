@@ -22,13 +22,11 @@ export default class LinePlot extends React.Component {
   updateD3(props) {
     let {data, width, height} = props;
 
-    this.xScale
-      .domain(d3.extent(data, d => this.props.xValue(d)))
-      .range([0, width]);
+    const [xMin, xMax] = d3.extent(data, d => this.props.xValue(d));
+    const [yMin, yMax] = d3.extent(data, d => this.props.yValue(d));
 
-    this.yScale
-      .domain([0, d3.max(data, d => this.props.yValue(d))])
-      .range([height, 0]);
+    this.xScale.domain([xMin, xMax * 1.1]).range([0, width]);
+    this.yScale.domain([yMin, yMax * 1.1]).range([height, 0]);
 
     this.line
       .x(d => this.xScale(this.props.xValue(d)))

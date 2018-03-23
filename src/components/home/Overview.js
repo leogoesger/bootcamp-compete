@@ -87,7 +87,7 @@ export default class Overview extends React.Component {
 
   render() {
     return (
-      <div className="col-lg-8 col-md-8 col-xs-12" style={styles.mainContainer}>
+      <div style={styles.mainContainer}>
         {metrics.map((metric, index) => {
           return this.renderCard(metric.name, metric.description, index);
         })}

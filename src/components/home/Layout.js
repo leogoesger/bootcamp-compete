@@ -71,11 +71,20 @@ export default class Layout extends React.Component {
           </div>
         </div>
 
-        <Overview
-          users={this.props.users}
-          fetchUser={userName => this.props.fetchUser(userName)}
-        />
-        <Plot currentUser={this.props.currentUser} />
+        <div
+          className="row col-lg-10 col-md-10 col-xs-12"
+          style={{margin: '0 auto'}}
+        >
+          <div className="col-lg-6 col-md-6 col-xs-12">
+            <Plot currentUser={this.props.currentUser} />
+          </div>
+          <div className="col-lg-6 col-md-6 col-xs-12" style={{margin: '0px'}}>
+            <Overview
+              users={this.props.users}
+              fetchUser={userName => this.props.fetchUser(userName)}
+            />
+          </div>
+        </div>
 
         <Snackbar
           anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
