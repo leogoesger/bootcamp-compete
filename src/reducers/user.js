@@ -16,7 +16,6 @@ export default function(state: STATE = initialState, action: ACTION) {
       return objectAssign({}, state, {currentUser: action.user});
     case types.CREATE_USER_ERROR_OBJECT:
       return objectAssign({}, state, {
-        currentUser: null,
         error: action.message,
       });
     case types.FETCH_USER_OBJECTS:
