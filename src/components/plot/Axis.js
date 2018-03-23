@@ -16,6 +16,7 @@ const blackBox = D3render => {
         let {x, y} = this.props;
         return (
           <g
+            className="xAxis"
             transform={`translate(${x}, ${y})`}
             ref={anchor => (this.anchor = anchor)}
           />
@@ -24,6 +25,7 @@ const blackBox = D3render => {
         const {x, y} = this.props;
         return (
           <g
+            className="yAxis"
             transform={`translate(${x}, ${y})`}
             ref={anchor => (this.anchor = anchor)}
           />
@@ -40,8 +42,17 @@ const Axis = blackBox(function() {
       .scale(this.props.scale)
       .tickSize(-this.props.gridLength, 0, 10)
       .tickSizeOuter(0)
-      .ticks(5)
-      .tickPadding(8);
+      .ticks(10)
+      .tickPadding(8)
+      .tickFormat((d, index) => {
+        if (index === 0) {
+          const date = new Date(d);
+          return `${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+        } else {
+          const date = new Date(d);
+          return `${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+        }
+      });
     d3.select(this.anchor).call(axis);
   } else {
     const axis = d3

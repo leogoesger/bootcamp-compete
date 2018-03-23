@@ -23,30 +23,27 @@ export default class Plot extends React.Component {
     }
   }
   render() {
-    const data = [
-      {time: 1, score: 12},
-      {time: 2, score: 13},
-      {time: 3, score: 22},
-      {time: 4, score: 26},
-      {time: 5, score: 22},
-      {time: 6, score: 26},
-      {time: 7, score: 22},
-      {time: 8, score: 26},
-    ];
+    if (!this.props.currentUser) {
+      return null;
+    }
+    const {currentUser} = this.props;
     return (
       <div style={styles.container}>
         <div style={styles.userInfoContainer}>
           <div style={{display: 'flex', justifyContent: 'space-around'}}>
             <Avatar
-              alt="Remy Sharp"
-              src={`https://www.inkmt.com/img/default-sq.jpg`}
+              alt={currentUser.name}
+              src={currentUser.profile_pic}
               style={{
                 marginTop: '10px',
                 width: '60px',
                 height: '60px',
               }}
             />
-            <CardHeader title="Nelly Sssss" subheader="Sacramento, CA" />
+            <CardHeader
+              title={currentUser.name}
+              subheader={currentUser.location}
+            />
           </div>
           <div style={{marginTop: '20px'}}>
             <span style={styles.scoreLabel}>{'score: '}</span>
@@ -54,7 +51,7 @@ export default class Plot extends React.Component {
           </div>
         </div>
 
-        {this.renderLinePlot(data)}
+        {this.renderLinePlot(currentUser.scores)}
       </div>
     );
   }
@@ -70,6 +67,7 @@ const styles = {
   },
   scoreLabel: {
     fontSize: '20px',
+    color: '#9e9e9e',
   },
   score: {
     fontSize: '30px',

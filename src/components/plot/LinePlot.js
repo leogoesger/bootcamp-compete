@@ -25,8 +25,8 @@ export default class LinePlot extends React.Component {
     const [xMin, xMax] = d3.extent(data, d => this.props.xValue(d));
     const [yMin, yMax] = d3.extent(data, d => this.props.yValue(d));
 
-    this.xScale.domain([xMin, xMax * 1.1]).range([0, width]);
-    this.yScale.domain([yMin, yMax * 1.1]).range([height, 0]);
+    this.xScale.domain([xMin, xMax]).range([0, width]);
+    this.yScale.domain([yMin * 0.95, yMax * 1.1]).range([height, 0]);
 
     this.line
       .x(d => this.xScale(this.props.xValue(d)))
