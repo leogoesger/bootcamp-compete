@@ -9,7 +9,7 @@ export default class Plot extends React.Component {
     if (data.length > 5) {
       return (
         <LinePlot
-          x={25}
+          x={40}
           y={10}
           data={data}
           width={500}
@@ -47,7 +47,7 @@ export default class Plot extends React.Component {
           </div>
           <div style={{marginTop: '20px'}}>
             <span style={styles.scoreLabel}>{'score: '}</span>
-            <span style={styles.score}>{'1220'}</span>
+            <span style={styles.score}>{currentUser.score}</span>
           </div>
         </div>
 

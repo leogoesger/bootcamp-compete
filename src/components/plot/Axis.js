@@ -42,7 +42,6 @@ const Axis = blackBox(function() {
       .scale(this.props.scale)
       .tickSize(-this.props.gridLength, 0, 10)
       .tickSizeOuter(0)
-      .ticks(10)
       .tickPadding(8)
       .tickFormat((d, index) => {
         if (index === 0) {
