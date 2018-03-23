@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Snackbar from 'material-ui/Snackbar';
 import {find} from 'lodash';
+import Divider from 'material-ui/Divider';
 
 import Loader from './Loader.js';
 import Overview from './Overview';
@@ -71,14 +72,20 @@ export default class Layout extends React.Component {
           </div>
         </div>
 
+        <Divider style={{width: '90%', margin: '10px auto'}} />
+
         <div
           className="row col-lg-10 col-md-10 col-xs-12"
-          style={{margin: '0 auto'}}
+          style={{
+            margin: '30px auto',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
         >
-          <div className="col-lg-6 col-md-6 col-xs-12">
+          <div style={{width: '45%'}}>
             <Plot currentUser={this.props.currentUser} />
           </div>
-          <div className="col-lg-6 col-md-6 col-xs-12" style={{margin: '0px'}}>
+          <div style={{margin: '0px', width: '50%'}}>
             <Overview
               users={this.props.users}
               fetchUser={userName => this.props.fetchUser(userName)}
@@ -115,6 +122,6 @@ const styles = {
   inputContainer: {
     display: 'flex',
     justifyContent: 'space-around',
-    margin: '120px auto',
+    margin: '80px auto 30px auto',
   },
 };

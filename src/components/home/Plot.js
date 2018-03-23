@@ -4,6 +4,8 @@ import LinePlot from '../plot/LinePlot';
 import Avatar from 'material-ui/Avatar';
 import {CardHeader} from 'material-ui/Card';
 
+import Construction from './Construction';
+
 export default class Plot extends React.Component {
   renderLinePlot(data) {
     if (data.length > 5) {
@@ -19,7 +21,7 @@ export default class Plot extends React.Component {
         />
       );
     } else {
-      return <div>{'Sorry, not enough data given!'}</div>;
+      return <Construction />;
     }
   }
   render() {
@@ -58,7 +60,13 @@ export default class Plot extends React.Component {
 }
 
 const styles = {
-  container: {},
+  container: {
+    position: 'fixed',
+    top: '22%',
+    left: '5%',
+    height: '600px',
+    minWidth: '40%',
+  },
   userInfoContainer: {
     width: '95%',
     margin: '0 auto',
