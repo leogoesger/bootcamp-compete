@@ -20,6 +20,8 @@ export default function(state: STATE = initialState, action: ACTION) {
       });
     case types.FETCH_USER_OBJECTS:
       return objectAssign({}, state, {users: action.users});
+    case types.UPDATE_USER_OBJECTS:
+      return objectAssign({}, state, {users: action.users});
     case types.FEATCH_USER_OBJECT:
       return objectAssign({}, state, {currentUser: action.user});
     case types.FETCHING_OBJECT:
