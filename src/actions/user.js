@@ -29,6 +29,13 @@ const updateUserObjects = users => {
   };
 }
 
+const updateUserObject = user => {
+  return {
+    type: types.UPDATE_USER_OBJECT,
+    user,
+  }
+}
+
 const fetchUserObject = user => {
   return {
     type: types.FEATCH_USER_OBJECT,
@@ -88,6 +95,12 @@ export function fetchUsers() {
 export function updateUsers(users){
   return dispatch => {
     dispatch(updateUserObjects(users));
+  }
+}
+
+export function updateUser(user){
+  return dispatch => {
+    dispatch(updateUserObject(user));
   }
 }
 
