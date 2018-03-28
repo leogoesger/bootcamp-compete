@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
       this.setState({open: true});
     }
   }
-
+  
   handleChange(e) {
     this.setState({input: e.target.value});
   }

@@ -22,6 +22,20 @@ const fetchUserObjects = users => {
   };
 };
 
+const updateUserObjects = users => {
+  return {
+    type: types.UPDATE_USER_OBJECTS,
+    users,
+  };
+}
+
+const updateUserObject = user => {
+  return {
+    type: types.UPDATE_USER_OBJECT,
+    user,
+  }
+}
+
 const fetchUserObject = user => {
   return {
     type: types.FEATCH_USER_OBJECT,
@@ -76,6 +90,18 @@ export function fetchUsers() {
       throw e;
     }
   };
+}
+
+export function updateUsers(users){
+  return dispatch => {
+    dispatch(updateUserObjects(users));
+  }
+}
+
+export function updateUser(user){
+  return dispatch => {
+    dispatch(updateUserObject(user));
+  }
 }
 
 export function fetchUser(user) {
