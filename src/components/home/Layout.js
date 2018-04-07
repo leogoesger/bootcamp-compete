@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
       this.setState({open: true});
     }
   }
-  
+
   handleChange(e) {
     this.setState({input: e.target.value});
   }
@@ -49,7 +49,7 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div style={{marginBottom: '100px'}}>
+      <div style={{marginBottom: '100px', minWidth: '1400px'}}>
         <div
           className="row col-lg-8 col-md-8 col-xs-12"
           style={styles.inputContainer}

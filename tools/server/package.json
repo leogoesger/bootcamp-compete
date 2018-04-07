@@ -1,0 +1,16 @@
+{
+  "name": "bootcamp-compete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.79ccc8bc48d0b6078fff.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "leo",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "~1.0.0",
+    "express": "~4.9.8"
+  }
+}
